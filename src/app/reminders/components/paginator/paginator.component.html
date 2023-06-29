@@ -1,0 +1,36 @@
+<nav>
+  <ul class="pagination">
+    <li [ngClass]="{ 'page-item': true, 'disabled': page === 1 }">
+      <a
+        href="#"
+        (click)="goToPage(page-1)"
+        class="page-link">
+        <i class="bi bi-chevron-left"></i>
+      </a>
+    </li>
+    <li [ngClass]="{ 'page-item': true }" *ngFor="let pageNumber of paginatorPages; first as isFirst; last as isLast">
+      <a 
+        *ngIf="pageNumber.type === 'number'"
+        href="#"
+        class="page-link"
+        (click)="goToPage(pageNumber.number)"
+        [ngClass]="{ active: page === pageNumber.number }">
+        {{ pageNumber.number }}
+      </a>
+      <a
+        *ngIf="pageNumber.type === 'ellipsis' && pageNumber.show"
+        href="#"
+        class="page-link disabled">
+        ...
+      </a>
+    </li>
+    <li [ngClass]="{ 'page-item': true, 'disabled': page === numberOfPages }">
+      <a
+        href="#"
+        (click)="goToPage(page+1)"
+        class="page-link">
+        <i class="bi bi-chevron-right"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

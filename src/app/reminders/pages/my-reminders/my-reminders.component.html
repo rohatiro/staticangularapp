@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created</th>
+      <th>Modified</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of _items; let i = index">
+      <td>{{ item.id }}</td>
+      <td>Item Name</td>
+      <td>12 / 03 / 2023</td>
+      <td>13 / 03 / 2023</td>
+      <td>
+        <span class="badge rounded-pill text-bg-primary">
+          300
+        </span>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<app-paginator [(page)]="page" [collectionSize]="collectionSize" [pageSize]="pageSize" [numberOfPages]="numberOfPages" (onPageChange)="pageChange($event)"/>
+
+<p>
+  Current page {{page}}
+  <br>
+  Page Size {{pageSize}}
+</p>
+
+<button class="btn btn-outline-primary" (click)="openModal()">Modal</button>
