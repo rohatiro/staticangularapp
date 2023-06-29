@@ -19,7 +19,9 @@ jobs:
         with:
           submodules: true
       - name: Before Deploy
-        run: npm run envs
+        run: |
+          npm install
+          npm run envs
 
       - name: Build And Deploy
         id: builddeploy
